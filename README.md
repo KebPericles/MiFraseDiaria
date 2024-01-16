@@ -8,7 +8,11 @@ Funcional al día 2024-01-16.
 ## Requisitos
 
 - Node.js
+  - v18.16.0
+  -
 - npm
+
+> [!CAUTION] Este script no requiere de ninguna licencia o código de pago.
 
 # Uso
 
@@ -20,7 +24,8 @@ npm install
 
 ### Paso 2: Configurar chat privado de WhatsApp
 
-Crear un archivo `.env` a partir del archivo de ejemplo `.env.example` y escribir el nombre del chat al que se quiere enviar el mensaje.
+Crear un archivo `.env` a partir del archivo de ejemplo `.env.example` y
+escribir el nombre del chat al que se quiere enviar el mensaje.
 
 ### Paso 3: Ejecutar el proyecto
 
@@ -57,3 +62,30 @@ crontab -e
 
 > Para más información sobre la sintaxis de `crontab`, ver
 > [este enlace](https://crontab.guru/).
+
+# Errores
+
+En cualquier error, se recomienda volver a ejecutar el script. Si el error
+persiste, se puede abrir un issue en este repositorio.
+
+## Errores posibles
+
+- Puede que el mensaje se envíe a un chat no deseado si este tiene el nombre del
+  que se busca.
+
+## Errores conocidos
+
+### Ejecución en Linux
+
+Errores de librerías con respecto a `puppeteer` y `chrome-aws-lambda`. Ejecutar
+el siguiente comando y volver a correr el script.
+
+```bash
+sudo apt install -y libatk1.0-0 libgbm1 libatk-bridge2.0-0 libcups2 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgm1 libxkbcommon0 libpango-1.0-0 libcairo2 libasound2
+```
+
+# Ideas de mejora
+
+- Lista de frases personalizadas.
+- Guardar el id del chat para no refiltrar cada vez.
+- Terminar el script cuando se envía el mensaje.
