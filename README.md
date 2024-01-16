@@ -25,7 +25,13 @@ npm install
 ### Paso 2: Configurar chat privado de WhatsApp
 
 Crear un archivo `.env` a partir del archivo de ejemplo `.env.example` y
-escribir el nombre del chat al que se quiere enviar el mensaje.
+escribir el número del contacto al que queremos enviar el mensaje, si es para
+nosotros ponemos nuestro número.
+
+> [!NOTE] 
+> El número debe tener el código de país, por ejemplo, para un número
+> mexicano, el número debe ser `5219876543210` donde el código de país es `521`,
+> el `1` no tengo ni idea de donde sale, pero se debe incluir.
 
 ### Paso 3: Ejecutar el proyecto
 
@@ -72,6 +78,8 @@ persiste, se puede abrir un issue en este repositorio.
 
 - Puede que el mensaje se envíe a un chat no deseado si este tiene el nombre del
   que se busca.
+- Parece ser que se cierra sesión espontáneamente, pero aún no se ha podido
+  reproducir el error.
 
 ## Errores conocidos
 
@@ -87,5 +95,3 @@ sudo apt install -y libatk1.0-0 libgbm1 libatk-bridge2.0-0 libcups2 libxcomposit
 # Ideas de mejora
 
 - Lista de frases personalizadas.
-- Guardar el id del chat para no refiltrar cada vez.
-- Terminar el script cuando se envía el mensaje.

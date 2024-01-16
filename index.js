@@ -33,25 +33,32 @@ async function getFraseDiaria() {
 
 // Iniciar sesión en WhatsApp Web
 wa.create(undefined, undefined, { refreshQR: 60000 }).then(client => {
+        function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
         async function enviarFraseDiaria(chatId) {
                 let fraseDiaria = await getFraseDiaria();
                 let frase = fraseDiaria.phrase;
                 let autor = fraseDiaria.author;
-                let mensaje = `${frase}\n\n${autor}`;
+                let mensaje = `${frase}\n - ${autor}`;
 
                 await client.sendText(chatId, mensaje);
 
                 console.log(`Frase diaria enviada a las ${new Date().toLocaleTimeString()}`);
+
+                // Esperar 1 segundo para que se envíe el mensaje (tal vez no sea necesario)
+                await sleep(1000);
+
+                // Forzar cierre de sesión
+                process.exit(0);
         }
 
-        // Buscar el chat con el contacto que se indica en el fichero .env y enviarle la frase diaria
-        client.getAllChats().then(chats => {
-                chats.forEach(chat => {
-                        if (chat.contact.name === process.env.NOMBRE_CONTACTO) {
-                                enviarFraseDiaria(chat.id);
-                        }
-                });
-
+        // Generar ChatId de la conversación con el número de contacto
+        // Para contactos es el número y termina en @c.us
+        // Para grupos termina en @g.us, pero el ID probablemente
+        // esta generado por WhatsApp
+        client.getChatById(`${process.env.NUMERO_CONTACTO}@c.us`).then(chat => {
+                enviarFraseDiaria(chat.contact.id);
         });
 });
-
