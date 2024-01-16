@@ -53,11 +53,6 @@ cierra la sesión de WhatsApp Web, por lo que es conveniente mantenerlo
 corriendo. La versión 2.0 no se ejecuta de forma indefinida, por lo que puede
 ser ejecutada de forma recurrente con alguna herramienta como `crontab`.
 
-> Reemplazar `/path/to/project` por la ruta absoluta del proyecto.
-
-> Para más información sobre la sintaxis de `crontab`, ver
-> [este enlace](https://crontab.guru/).
-
 # Errores
 
 En cualquier error, se recomienda volver a ejecutar el script. Si el error
