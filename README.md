@@ -12,7 +12,8 @@ Funcional al día 2024-01-16.
   -
 - npm
 
-> [!CAUTION] Este script no requiere de ninguna licencia o código de pago.
+> [!CAUTION] 
+> Este script no requiere de ninguna licencia o código de pago.
 
 # Uso
 
@@ -46,23 +47,11 @@ el cual debe ser escaneado con la aplicación de WhatsApp en el celular.
 
 ## Recurrente
 
-Al ser un script tan simple, es conveniente ejecutarlo de forma recurrente, en
-vez de mantenerlo corriendo en segundo plano.
-
-En linux, se puede usar `crontab` para esto, por ejemplo, todos los días a las
-8:00 AM.
-
-### Paso 1: Abrir archivo de configuración de `crontab`
-
-```bash
-crontab -e
-```
-
-### Paso 2: Agregar línea al archivo
-
-```bash
-0 8 * * * cd /path/to/project && npm start
-```
+El script se ejecuta indefinidamente, mandando un mensaje diario, el gasto de
+recurso puede ser considerable. Pero al parecer si se cierra el script, se
+cierra la sesión de WhatsApp Web, por lo que es conveniente mantenerlo
+corriendo. La versión 2.0 no se ejecuta de forma indefinida, por lo que puede
+ser ejecutada de forma recurrente con alguna herramienta como `crontab`.
 
 > Reemplazar `/path/to/project` por la ruta absoluta del proyecto.
 
@@ -78,8 +67,8 @@ persiste, se puede abrir un issue en este repositorio.
 
 - Puede que el mensaje se envíe a un chat no deseado si este tiene el nombre del
   que se busca.
-- Parece ser que se cierra sesión espontáneamente, pero aún no se ha podido
-  reproducir el error.
+- Puedes ser que se cierre la sesión, pero al dejar el script corriendo de forma
+  indefinida, no debería suceder.
 
 ## Errores conocidos
 

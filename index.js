@@ -37,7 +37,37 @@ wa.create(undefined, undefined, { refreshQR: 60000 }).then(client => {
                 return new Promise(resolve => setTimeout(resolve, ms));
         }
 
+        async function esperarHoraEnvio() {
+                let horaEnvio = parseInt(process.env.HORA_ENVIO);
+                let minutosEnvio = parseInt(process.env.MINUTOS_ENVIO);
+
+                // Esperar a la hora de envío
+                let horaActual = new Date().getHours();
+                let minutosActuales = new Date().getMinutes();
+
+                let horaEspera = horaEnvio - horaActual;
+                let minutosEspera = minutosEnvio - minutosActuales;
+
+                if (horaEspera < 0) {
+                        horaEspera = 24 + horaEspera;
+                }
+
+                if (minutosEspera < 0) {
+                        horaEspera--;
+                        minutosEspera = 60 + minutosEspera;
+                }
+
+                let tiempoEspera = (horaEspera * 60 * 60 * 1000) + (minutosEspera * 60 * 1000);
+
+                console.log(`Esperando ${horaEspera} horas y ${minutosEspera} minutos para enviar la frase diaria`);
+
+                await sleep(tiempoEspera);
+        }
+
         async function enviarFraseDiaria(chatId) {
+                // Esperar a la hora de envío
+                await esperarHoraEnvio();
+
                 let fraseDiaria = await getFraseDiaria();
                 let frase = fraseDiaria.phrase;
                 let autor = fraseDiaria.author;
@@ -47,11 +77,10 @@ wa.create(undefined, undefined, { refreshQR: 60000 }).then(client => {
 
                 console.log(`Frase diaria enviada a las ${new Date().toLocaleTimeString()}`);
 
-                // Esperar 1 segundo para que se envíe el mensaje (tal vez no sea necesario)
-                await sleep(1000);
+                // Esperar 2 minutos para evitar que se envíen mensajes duplicados
+                await sleep(1000 * 60 * 2);
 
-                // Forzar cierre de sesión
-                process.exit(0);
+                enviarFraseDiaria(chatId);
         }
 
         // Generar ChatId de la conversación con el número de contacto
@@ -59,6 +88,8 @@ wa.create(undefined, undefined, { refreshQR: 60000 }).then(client => {
         // Para grupos termina en @g.us, pero el ID probablemente
         // esta generado por WhatsApp
         client.getChatById(`${process.env.NUMERO_CONTACTO}@c.us`).then(chat => {
+                client.sendText(chat.contact.id, `Me he iniciado correctamente, esperando a la hora de envío, que es a las ${process.env.HORA_ENVIO}:${process.env.MINUTOS_ENVIO}, puedes borrar este mensaje`);
+
                 enviarFraseDiaria(chat.contact.id);
         });
 });
