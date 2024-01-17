@@ -12,8 +12,7 @@ Funcional al día 2024-01-16.
   -
 - npm
 
-> [!CAUTION] 
-> Este script no requiere de ninguna licencia o código de pago.
+> [!CAUTION] Este script no requiere de ninguna licencia o código de pago.
 
 # Uso
 
@@ -23,27 +22,45 @@ Funcional al día 2024-01-16.
 npm install
 ```
 
+E instalar `pm2` de forma global.
+
+```bash
+npm install -g pm2
+```
+
+> [!NOTE] 
+> Es posible que se requieran permisos de administrador para instalar
+> `pm2` de forma global. En ese caso, ejecutar el comando anterior con `sudo`.
+
 ### Paso 2: Configurar chat privado de WhatsApp
 
 Crear un archivo `.env` a partir del archivo de ejemplo `.env.example` y
 escribir el número del contacto al que queremos enviar el mensaje, si es para
 nosotros ponemos nuestro número.
 
-> [!NOTE] 
-> El número debe tener el código de país, por ejemplo, para un número
+> [!NOTE] El número debe tener el código de país, por ejemplo, para un número
 > mexicano, el número debe ser `5219876543210` donde el código de país es `521`,
 > el `1` no tengo ni idea de donde sale, pero se debe incluir.
 
 ### Paso 3: Ejecutar el proyecto
 
 ```bash
-npm start
+pm2 start index.js --name "frase-del-dia"
 ```
 
-### Paso 4: Iniciar sesión en WhatsApp Web
+> [!NOTE]
+> Se usa `pm2` para asegurar que el script se ejecute de forma indefinida.
 
-Al ejecutar el script por primera vez, se imprimirá un código QR en la consola,
-el cual debe ser escaneado con la aplicación de WhatsApp en el celular.
+### Paso 4: Iniciar sesión en WhatsApp Web (solo la primera vez)
+
+Primero se debe ejecutar el comando:
+
+```bash
+pm2 monit
+```
+
+Se podrá ver la salida del script, en la cual se mostrará un código QR, el cual
+debe ser escaneado con la aplicación de WhatsApp en el celular.
 
 ## Recurrente
 
