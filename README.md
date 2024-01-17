@@ -8,8 +8,7 @@ Funcional al día 2024-01-16.
 ## Requisitos
 
 - Node.js
-  - v18.16.0
-  -
+  - mayor o igual a 18.16.0
 - npm
 
 > [!CAUTION]
@@ -64,6 +63,11 @@ pm2 monit
 Se podrá ver la salida del script, en la cual se mostrará un código QR, el cual
 debe ser escaneado con la aplicación de WhatsApp en el celular.
 
+> [!IMPORTANT]
+> En este punto se enviará un mensaje de confirmación al chat privado de WhatsApp,
+> si no se recibe el mensaje en un lapso de 10 minutos, se debe volver a ejecutar
+> el script.
+
 # Paso 5: Guardar configuración de `pm2`
 
 Este comando asegura que pm2 se ejecute al iniciar el sistema operativo.
@@ -78,8 +82,6 @@ el script al iniciar el sistema operativo.
 ```bash
 pm2 save
 ```
-
-
 
 ## Recurrente
 
