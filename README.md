@@ -12,7 +12,8 @@ Funcional al día 2024-01-16.
   -
 - npm
 
-> [!CAUTION] Este script no requiere de ninguna licencia o código de pago.
+> [!CAUTION]
+> Este script no requiere de ninguna licencia o código de pago.
 
 # Uso
 
@@ -38,7 +39,8 @@ Crear un archivo `.env` a partir del archivo de ejemplo `.env.example` y
 escribir el número del contacto al que queremos enviar el mensaje, si es para
 nosotros ponemos nuestro número.
 
-> [!NOTE] El número debe tener el código de país, por ejemplo, para un número
+> [!NOTE]
+> El número debe tener el código de país, por ejemplo, para un número
 > mexicano, el número debe ser `5219876543210` donde el código de país es `521`,
 > el `1` no tengo ni idea de donde sale, pero se debe incluir.
 
@@ -61,6 +63,23 @@ pm2 monit
 
 Se podrá ver la salida del script, en la cual se mostrará un código QR, el cual
 debe ser escaneado con la aplicación de WhatsApp en el celular.
+
+# Paso 5: Guardar configuración de `pm2`
+
+Este comando asegura que pm2 se ejecute al iniciar el sistema operativo.
+
+```bash
+pm2 startup
+```
+
+Con este comando se guarda la configuración actual de `pm2` para que se ejecute
+el script al iniciar el sistema operativo.
+
+```bash
+pm2 save
+```
+
+
 
 ## Recurrente
 
