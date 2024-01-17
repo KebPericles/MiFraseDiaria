@@ -48,7 +48,7 @@ wa.create(undefined, undefined, { refreshQR: 60000 }).then(client => {
                 let horaEspera = horaEnvio - horaActual;
                 let minutosEspera = minutosEnvio - minutosActuales;
 
-                if (horaEspera < 0) {
+                if (horaEspera <= 0) {
                         horaEspera = 24 + horaEspera;
                 }
 
