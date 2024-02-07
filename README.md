@@ -3,7 +3,7 @@
 Este script envía una frase del día a un chat privado de WhatsApp. La frase se
 obtiene de una API que la toma de [proverbia.net](https://proverbia.net/).
 
-Funcional al día 2024-01-16.
+Funcional al día 2024-02-06.
 
 ## Requisitos
 
