@@ -105,6 +105,9 @@ persiste, se puede abrir un issue en este repositorio.
 
 ## Errores conocidos
 
+### Error `CreateChatDuplicateError`
+Error en WhatsApp Web, aún sin mucha información, solución temporal en [#2](https://github.com/KebPericles/MiFraseDiaria/issues/2).
+
 ### Ejecución en Linux
 
 Errores de librerías con respecto a `puppeteer` y `chrome-aws-lambda`. Ejecutar
