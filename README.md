@@ -110,12 +110,15 @@ Error en WhatsApp Web, aún sin mucha información, solución temporal en [#2](h
 
 ### Ejecución en Linux
 
-Errores de librerías con respecto a `puppeteer` y `chrome-aws-lambda`. Ejecutar
+Errores de librerías con respecto a `puppeteer`. Ejecutar
 el siguiente comando y volver a correr el script.
 
 ```bash
-sudo apt install -y libatk1.0-0 libgbm1 libatk-bridge2.0-0 libcups2 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgm1 libxkbcommon0 libpango-1.0-0 libcairo2 libasound2
+sudo apt install -y ca-certificates fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils
 ```
+
+> [!Important]
+> [Click acá](https://pptr.dev/troubleshooting#chrome-doesnt-launch-on-linux) para más información sobre este y otros problemas con puppeteer
 
 # Ideas de mejora
 
